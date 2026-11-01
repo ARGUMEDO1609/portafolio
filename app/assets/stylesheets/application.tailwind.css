@@ -125,6 +125,10 @@ img{max-width:100%}
   .personal-spread{padding-left:16px;padding-right:14px}
   .contact-orbit{opacity:.55}
 }
+.case-screenshot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.case-art:has(.case-screenshot):before{z-index:1;pointer-events:none}
+.case-art:has(.case-screenshot) .case-art-label,.case-art:has(.case-screenshot) .case-art-year{z-index:2;padding:6px 8px;background:#f5efe5e8;color:#39352f}
+.case-row:hover .case-screenshot{transform:scale(1.04)}
 
 /* Type system and tactile interaction states. */
 :root{--serif:'DM Serif Display',Georgia,serif;--mono:'DM Mono','Courier New',monospace;--sans:'DM Sans',Arial,sans-serif}

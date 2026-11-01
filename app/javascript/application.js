@@ -26,7 +26,24 @@ function initializeTheme() {
   applyTheme(savedTheme || (systemPrefersDark ? "dark" : "light"));
 }
 
+function initializeProjectPreviews() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll("[data-project-preview]").forEach((video) => {
+    if (reduceMotion) {
+      video.pause();
+      return;
+    }
+
+    video.play().catch(() => {});
+  });
+}
+
 document.addEventListener("turbo:load", initializeTheme);
+document.addEventListener("turbo:load", initializeProjectPreviews);
+document.addEventListener("turbo:before-cache", () => {
+  document.querySelectorAll("[data-project-preview]").forEach((video) => video.pause());
+});
 document.addEventListener("click", (event) => {
   const toggle = event.target.closest("[data-theme-toggle]");
   if (!toggle) return;

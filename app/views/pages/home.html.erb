@@ -8,7 +8,7 @@
     <a class="signature" href="#inicio" aria-label="Volver al inicio">P<span>—</span></a>
     <p class="masthead-note">PORTAFOLIO INDEPENDIENTE<br>DISEÑO + DESARROLLO</p>
     <nav aria-label="Navegación principal">
-      <a href="#trabajo">Trabajo <sup>03</sup></a>
+      <a href="#trabajo">Trabajo <sup><%= @projects.size.to_s.rjust(2, "0") %></sup></a>
       <a href="#nota">Nota personal</a>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Activar modo oscuro" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">OSCURO</span></button>
       <a href="#contacto" class="contact-pill">Contacto <span>↗</span></a>
@@ -42,24 +42,30 @@
 
   <section class="work-spread" id="trabajo">
     <div class="work-heading">
-      <div><p class="kicker"><span>02</span> / ARCHIVO ABIERTO</p><h2>Trabajo<br><em>seleccionado</em><span class="orange">.</span></h2></div>
-      <p>Una colección de problemas que me dieron curiosidad y cosas que decidí construir.</p>
+      <div><p class="kicker"><span>02</span> / PROYECTOS CREADOS</p><h2>Trabajo<br><em>seleccionado</em><span class="orange">.</span></h2></div>
+      <p>Proyectos que he creado para aprender, resolver problemas y llevar ideas a la web.</p>
     </div>
     <div class="project-list">
       <% @projects.each do |project| %>
         <article class="case-row">
           <div class="case-index"><span><%= project[:number] %></span><i></i><small><%= project[:category] %></small></div>
           <div class="case-art case-art-<%= project[:number] %>">
-            <span class="case-art-label">NOTAS DE PROCESO</span>
-            <div class="case-symbol"><span></span><span></span><span></span></div>
-            <span class="case-art-year">EST. 2026</span>
+            <span class="case-art-label"><%= project[:image].present? || project[:video].present? ? "VISTA DEL PROYECTO" : "PROYECTO PERSONAL" %></span>
+            <% if project[:image].present? %>
+              <%= image_tag project[:image], alt: "Vista de #{project[:name]}", class: "case-screenshot", loading: "lazy" %>
+            <% elsif project[:video].present? %>
+              <%= video_tag project[:video], class: "case-screenshot", muted: true, loop: true, playsinline: true, preload: "metadata", data: { project_preview: true }, aria: { label: "Vista previa de #{project[:name]}" } %>
+            <% else %>
+              <div class="case-symbol"><span></span><span></span><span></span></div>
+            <% end %>
+            <span class="case-art-year"><%= project[:image].present? ? "INSPIRATION STORE" : project[:category].upcase %></span>
           </div>
           <div class="case-copy"><p class="case-overline">CASO DE ESTUDIO / <%= project[:number] %></p><h3><%= project[:name] %></h3><p><%= project[:description] %></p><div class="case-tools"><% project[:stack].each do |tag| %><span><%= tag %></span><% end %></div></div>
-          <a class="case-open" href="<%= project[:url] %>" aria-label="Abrir <%= project[:name] %>">↗</a>
+          <a class="case-open" href="<%= project[:url] %>" aria-label="Abrir <%= project[:name] %>" target="_blank" rel="noreferrer">↗</a>
         </article>
       <% end %>
     </div>
-    <p class="work-footnote"><span>*</span> PROYECTOS, CONTEXTO Y RESULTADOS: PRÓXIMAMENTE CON MÁS DETALLE</p>
+    <p class="work-footnote"><span>*</span> DOS PROYECTOS CREADOS DESDE MEDELLÍN, COLOMBIA</p>
   </section>
 
   <section class="personal-spread" id="nota">
