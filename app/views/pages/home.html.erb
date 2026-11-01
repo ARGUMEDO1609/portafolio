@@ -1,0 +1,82 @@
+<% content_for :title, "Portafolio — Diseño y desarrollo con intención" %>
+<% content_for :head do %>
+  <meta name="description" content="Un espacio para compartir proyectos, procesos e ideas en construcción." />
+<% end %>
+
+<main class="portfolio" id="inicio">
+  <header class="masthead">
+    <a class="signature" href="#inicio" aria-label="Volver al inicio">P<span>—</span></a>
+    <p class="masthead-note">PORTAFOLIO INDEPENDIENTE<br>DISEÑO + DESARROLLO</p>
+    <nav aria-label="Navegación principal">
+      <a href="#trabajo">Trabajo <sup>03</sup></a>
+      <a href="#nota">Nota personal</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Activar modo oscuro" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">OSCURO</span></button>
+      <a href="#contacto" class="contact-pill">Contacto <span>↗</span></a>
+    </nav>
+  </header>
+
+  <section class="intro-spread">
+    <div class="intro-topline"><span>MEDELLÍN, COLOMBIA</span><span>DISPONIBLE PARA COLABORAR <i></i></span></div>
+    <div class="intro-layout">
+      <div class="intro-copy">
+        <p class="kicker"><span>01</span> / PRESENTACIÓN</p>
+        <h1>Hago que las<br>ideas <em>encuentren</em><br>su forma<span class="orange">.</span></h1>
+        <div class="intro-bottom">
+          <p>Un portafolio en proceso de convertirse en algo propio. Aquí viven proyectos, preguntas y soluciones hechas con intención.</p>
+          <a href="#trabajo" class="round-link" aria-label="Explorar proyectos">↓</a>
+        </div>
+      </div>
+      <div class="portrait-panel">
+        <div class="portrait-frame">
+          <%= image_tag "perfil.jpg", class: "profile-photo", alt: "Foto de perfil", fetchpriority: "high" %>
+          <span class="portrait-coordinate">6° 15' N<br>75° 34' O</span>
+          <span class="portrait-caption">UNA IDENTIDAD<br>POR DEFINIR</span>
+        </div>
+        <p class="image-note">01 — ESTUDIO DE IDENTIDAD / 2026</p>
+      </div>
+    </div>
+    <div class="intro-footer"><span>DESLIZA PARA EXPLORAR</span><span>© <%= Date.current.year %></span><span>HECHO CON CURIOSIDAD <b>✳</b></span></div>
+  </section>
+
+  <div class="ticker" aria-label="Diseño, tecnología y buenas preguntas"><div>DISEÑO CON INTENCIÓN <b>✳</b> TECNOLOGÍA CON PROPÓSITO <b>✳</b> SIEMPRE APRENDIENDO <b>✳</b> DISEÑO CON INTENCIÓN <b>✳</b> TECNOLOGÍA CON PROPÓSITO <b>✳</b></div></div>
+
+  <section class="work-spread" id="trabajo">
+    <div class="work-heading">
+      <div><p class="kicker"><span>02</span> / ARCHIVO ABIERTO</p><h2>Trabajo<br><em>seleccionado</em><span class="orange">.</span></h2></div>
+      <p>Una colección de problemas que me dieron curiosidad y cosas que decidí construir.</p>
+    </div>
+    <div class="project-list">
+      <% @projects.each do |project| %>
+        <article class="case-row">
+          <div class="case-index"><span><%= project[:number] %></span><i></i><small><%= project[:category] %></small></div>
+          <div class="case-art case-art-<%= project[:number] %>">
+            <span class="case-art-label">NOTAS DE PROCESO</span>
+            <div class="case-symbol"><span></span><span></span><span></span></div>
+            <span class="case-art-year">EST. 2026</span>
+          </div>
+          <div class="case-copy"><p class="case-overline">CASO DE ESTUDIO / <%= project[:number] %></p><h3><%= project[:name] %></h3><p><%= project[:description] %></p><div class="case-tools"><% project[:stack].each do |tag| %><span><%= tag %></span><% end %></div></div>
+          <a class="case-open" href="<%= project[:url] %>" aria-label="Abrir <%= project[:name] %>">↗</a>
+        </article>
+      <% end %>
+    </div>
+    <p class="work-footnote"><span>*</span> PROYECTOS, CONTEXTO Y RESULTADOS: PRÓXIMAMENTE CON MÁS DETALLE</p>
+  </section>
+
+  <section class="personal-spread" id="nota">
+    <div class="personal-aside"><p class="kicker"><span>03</span> / NOTA PERSONAL</p><div class="asterisk">✳</div><p class="aside-caption">UN POCO DE<br>CONTEXTO</p></div>
+    <div class="personal-main"><h2>No se trata solo<br>de que funcione.<br><em>También debe<br>sentirse correcto.</em></h2><div class="personal-bottom"><p>Trabajo con Ruby on Rails, React, Tailwind CSS y HTML para construir experiencias web. También completé en Sapiencia una formación de 30 horas sobre inteligencia artificial como asistente administrativo en el sector público.</p><div class="toolbox"><span class="toolbox-title">TECNOLOGÍAS</span><div><span>Ruby on Rails</span><span>React</span><span>Tailwind CSS</span><span>HTML</span></div></div></div>
+      <a class="credential-card" href="<%= asset_path('Certificado_Modelo_de_negocios_a_travs_de_blockchain.jpg') %>" target="_blank" rel="noreferrer">Certificado: Inteligencia artificial como asistente administrativo en el sector público <span>↗</span></a>
+      <a class="credential-card" href="<%= asset_path('UC-42d7f7d6-043e-4b2d-9159-2693ecd610e6.jpg') %>" target="_blank" rel="noreferrer">Certificado: Ruby on Rails 7 y Hotwire (2023) <span>↗</span></a>
+    </div>
+    <div class="vertical-note">APRENDER · PROBAR · VOLVER A INTENTAR</div>
+  </section>
+
+  <section class="contact-spread" id="contacto">
+    <p class="kicker"><span>04</span> / SIGUIENTE CAPÍTULO</p>
+    <h2>¿Y si hacemos<br>algo <em>bueno?</em></h2>
+    <div class="contact-bottom"><p>Si tienes un proyecto, una pregunta o simplemente quieres saludar, mi bandeja está abierta.</p><div class="contact-actions"><a href="mailto:noslenque931@gmail.com" class="email-link">NOSLENQUE931@GMAIL.COM <span>↗</span></a><a href="https://wa.me/573022069265" class="whatsapp-link" target="_blank" rel="noreferrer">WHATSAPP <span>↗</span></a></div></div>
+    <div class="contact-orbit"><span>HABLEMOS</span><b>↗</b></div>
+  </section>
+
+  <footer class="folio-footer"><a class="signature" href="#inicio">P<span>—</span></a><span>DISEÑADO Y CONSTRUIDO EN MEDELLÍN</span><div><a href="https://github.com/" target="_blank" rel="noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/nelson-argumedo" target="_blank" rel="noreferrer">LINKEDIN ↗</a></div><a href="#inicio">VOLVER AL INICIO ↑</a></footer>
+</main>

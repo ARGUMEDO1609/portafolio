@@ -1,0 +1,22 @@
+# Secrets and local environment
+/config/master.key
+/.env
+/.env.*
+!/.env.example
+/.kamal/secrets
+
+# Dependencies and generated assets
+/node_modules/
+/public/assets/
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/tmp/
+/log/
+/storage/*
+!/storage/.keep
+
+# Local editor and operating system files
+.DS_Store
+*.swp
+*.swo
+*:Zone.Identifier
