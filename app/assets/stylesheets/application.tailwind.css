@@ -125,3 +125,27 @@ img{max-width:100%}
   .personal-spread{padding-left:16px;padding-right:14px}
   .contact-orbit{opacity:.55}
 }
+
+/* Type system and tactile interaction states. */
+:root{--serif:'DM Serif Display',Georgia,serif;--mono:'DM Mono','Courier New',monospace;--sans:'DM Sans',Arial,sans-serif}
+body{font-family:var(--sans)}
+.intro-copy h1,.work-heading h2,.personal-main h2,.contact-spread h2,.case-copy h3{font-family:'Space Grotesk',var(--sans)}
+.intro-copy h1 em,.work-heading h2 em,.personal-main h2 em,.contact-spread h2 em,.case-copy h3{ text-wrap:balance }
+.round-link{width:44px;height:44px}
+.contact-pill,.round-link,.case-open,.theme-toggle,.credential-card,.email-link,.whatsapp-link,.folio-footer a{transition:color .22s ease,background-color .22s ease,border-color .22s ease,transform .22s ease,box-shadow .22s ease}
+.contact-pill:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+.contact-pill:hover span{color:var(--acid)}
+.round-link:hover,.case-open:hover{transform:translateY(-3px) rotate(-7deg);box-shadow:0 6px 14px #22221f1c}
+.case-open{width:40px;height:40px}
+.case-art:before{transition:inset .3s ease,border-color .3s ease}
+.case-row:hover .case-art:before{inset:8px;border-color:#45453a66}
+.case-row:hover .case-symbol{animation:case-turn .55s ease both}
+.theme-toggle:hover .theme-icon{transform:rotate(-18deg) scale(1.15)}
+.theme-icon{transition:transform .22s ease}
+.credential-card:hover,.email-link:hover,.whatsapp-link:hover{transform:translateX(4px)}
+.folio-footer a:hover{color:var(--orange)}
+.contact-pill:active,.round-link:active,.case-open:active,.theme-toggle:active{transform:scale(.96)}
+:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+@keyframes case-turn{to{transform:rotate(0deg) scale(1.06)}}
+@media(hover:none){.case-row:hover .case-symbol{animation:none}.case-row:hover .case-art:before{inset:12px}}
+@media(prefers-reduced-motion:reduce){.contact-pill,.round-link,.case-open,.theme-toggle,.credential-card,.email-link,.whatsapp-link,.folio-footer a,.case-art:before,.theme-icon{transition:none!important}.case-row:hover .case-symbol{animation:none}}
