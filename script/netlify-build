@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -euxo pipefail
 
 bundle install
 
 export RAILS_ENV=production
 export SECRET_KEY_BASE="portfolio-static-build-only"
-bin/rails assets:precompile
-bin/rails runner script/prerender_portfolio.rb
+bundle exec ruby bin/rails assets:precompile
+bundle exec ruby bin/rails runner script/prerender_portfolio.rb
