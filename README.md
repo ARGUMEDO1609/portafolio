@@ -43,3 +43,9 @@ Los tres proyectos iniciales son contenido de muestra. Sustitúyelos por proyect
 ## Despliegue
 
 La configuración de despliegue usa Kamal (`config/deploy.yml`). Configura los secretos, la imagen y el acceso a PostgreSQL para el entorno destino antes de desplegar. No publiques `config/master.key`; proporciona la clave mediante el mecanismo de secretos del entorno.
+
+### Netlify
+
+Netlify publica una versión estática de la portada. `netlify.toml` usa `script/netlify-build` para compilar los assets y renderizar `/` durante el build; el resultado queda en `dist/`. Conecta este repositorio a Netlify y usa la rama `main`; Netlify leerá la configuración del repositorio y reconstruirá el sitio después de cada push.
+
+La versión estática incluye el portafolio, imágenes, video, enlaces y modo oscuro. No ejecuta Rails en producción, por lo que las rutas dinámicas como inicio de sesión de Devise no están disponibles en Netlify.

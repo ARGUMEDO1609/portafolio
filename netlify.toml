@@ -1,0 +1,7 @@
+[build]
+  command = "bash ./script/netlify-build"
+  publish = "dist"
+
+[build.environment]
+  RUBY_VERSION = "3.4.9"
+  NODE_VERSION = "24.12.0"

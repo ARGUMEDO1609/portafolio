@@ -8,6 +8,7 @@
 # Dependencies and generated assets
 /node_modules/
 /public/assets/
+/dist/
 /app/assets/builds/*
 !/app/assets/builds/.keep
 /tmp/

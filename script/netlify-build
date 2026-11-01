@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+bundle install
+yarn install --frozen-lockfile
+yarn build
+yarn build:css
+
+export RAILS_ENV=production
+export SECRET_KEY_BASE="portfolio-static-build-only"
+bin/rails assets:precompile
+bin/rails runner script/prerender_portfolio.rb

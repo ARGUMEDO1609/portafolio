@@ -125,6 +125,14 @@ img{max-width:100%}
   .personal-spread{padding-left:16px;padding-right:14px}
   .contact-orbit{opacity:.55}
 }
+.social-icons{display:flex;align-items:center;gap:12px}
+.social-icon-link{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:7px 8px;color:var(--muted);font:7px var(--mono);letter-spacing:.5px;border:1px solid transparent;border-radius:3px}
+.social-icon-link svg{width:16px;height:16px;flex:none}
+.social-icon-link b{font:10px Arial;color:var(--orange);transition:transform .2s ease}
+.social-icon-link:hover{color:var(--ink);border-color:var(--line);transform:translateY(-2px)}
+.social-icon-link:hover b{transform:translate(2px,-2px)}
+.social-icon-link:focus-visible{outline-offset:2px}
+@media(max-width:760px){.folio-footer .social-icons{gap:3px}.social-icon-link{gap:4px;padding:6px;font-size:6px}.social-icon-link svg{width:15px;height:15px}}
 .case-screenshot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .case-art:has(.case-screenshot):before{z-index:1;pointer-events:none}
 .case-art:has(.case-screenshot) .case-art-label,.case-art:has(.case-screenshot) .case-art-year{z-index:2;padding:6px 8px;background:#f5efe5e8;color:#39352f}
